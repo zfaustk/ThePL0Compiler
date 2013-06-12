@@ -17,7 +17,7 @@ How to use
 	1.	open cmd .
 	2.	cd to the fold .
 	3.	use ThePL0Compiler [command] [value] .
-###     4.	[command]
+   	4.	[command]
 		-r [file name] : open editor then read the file autoly .
 			example : >ThePL0Compiler -r test
 		-g [file name] : check grammar of the file .
