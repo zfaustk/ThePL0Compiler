@@ -1,0 +1,16 @@
+
+const a = 35 ; 
+var c,d; 
+procedure p; 
+	 begin 
+	 	 var g; 
+	 	 g:=5; 
+	 	 write ( g ) ; 
+	 end 
+
+begin 
+	 read(c,d); 
+	 if a <= d then c = a ; 
+	 write(c,d); 
+	 call p; 
+end 

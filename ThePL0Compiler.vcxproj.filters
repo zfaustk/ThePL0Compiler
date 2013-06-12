@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\DFA">
+      <UniqueIdentifier>{999c1c8a-c22b-4d86-97d4-75c3636bb1ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Lexical">
+      <UniqueIdentifier>{912aad84-1fca-412c-9811-c4b347a25a3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\View">
+      <UniqueIdentifier>{5f2278dd-ac10-4dfe-b577-8280005642f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Gramma">
+      <UniqueIdentifier>{858cc057-ace6-4e3a-b4a3-32fcaeffaf11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\LAView">
+      <UniqueIdentifier>{fd5934c7-e3a3-4efc-a44d-d8bb3d40677e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_DFA.h">
+      <Filter>头文件\DFA</Filter>
+    </ClInclude>
+    <ClInclude Include="DFAMachine.h">
+      <Filter>头文件\DFA</Filter>
+    </ClInclude>
+    <ClInclude Include="_DFA_Adapter_Range.h">
+      <Filter>头文件\DFA</Filter>
+    </ClInclude>
+    <ClInclude Include="_DFA_Adapter_Token.h">
+      <Filter>头文件\DFA</Filter>
+    </ClInclude>
+    <ClInclude Include="LexicalAnalysis.h">
+      <Filter>头文件\Lexical</Filter>
+    </ClInclude>
+    <ClInclude Include="LexicalAnalysisReservedWord.h">
+      <Filter>头文件\Lexical</Filter>
+    </ClInclude>
+    <ClInclude Include="LexicalAnalysisDefine.h">
+      <Filter>头文件\Lexical</Filter>
+    </ClInclude>
+    <ClInclude Include="KH_Draw_color.h">
+      <Filter>头文件\View</Filter>
+    </ClInclude>
+    <ClInclude Include="KH_TextList.h">
+      <Filter>头文件\View</Filter>
+    </ClInclude>
+    <ClInclude Include="KH_DrawText.h">
+      <Filter>头文件\View</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenAnalysis.h">
+      <Filter>头文件\Lexical</Filter>
+    </ClInclude>
+    <ClInclude Include="LA_View.h">
+      <Filter>头文件\LAView</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleDeal.h">
+      <Filter>头文件\LAView</Filter>
+    </ClInclude>
+    <ClInclude Include="GrammarErrorType.h">
+      <Filter>头文件\Gramma</Filter>
+    </ClInclude>
+    <ClInclude Include="DFAM_Range.h">
+      <Filter>头文件\Lexical</Filter>
+    </ClInclude>
+    <ClInclude Include="GrammarAnalysis.h">
+      <Filter>头文件\Gramma</Filter>
+    </ClInclude>
+    <ClInclude Include="CodeGenerate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KH_TokenList.h">
+      <Filter>头文件\View</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KH_DrawText.cpp">
+      <Filter>头文件\View</Filter>
+    </ClCompile>
+    <ClCompile Include="KH_TextList.cpp">
+      <Filter>头文件\View</Filter>
+    </ClCompile>
+    <ClCompile Include="GrammarAnalysis.cpp">
+      <Filter>头文件\Gramma</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

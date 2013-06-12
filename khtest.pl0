@@ -1,0 +1,19 @@
+const __KH_MAX_NUM = 100 ;
+
+var nInput , nNum ;
+
+procedure writeNum ;
+	{
+		if nNum >= __KH_MAX_NUM then nNum = __KH_MAX_NUM ;
+		write ( nNum ) ;
+	}
+
+begin
+	read ( nInput ) ;
+	while nInput > 0 do
+	{
+		read ( nNum ) ;
+		nInput = nInput - 1 ;
+		call writeNum ;
+	}
+end
