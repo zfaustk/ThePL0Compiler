@@ -17,14 +17,14 @@ How to use
 	1.	open cmd .
 	2.	cd to the fold .
 	3.	use ThePL0Compiler [command] [value] .
-   	4.	[command]
-		-r [file name] : open editor then read the file autoly .
-			example : >ThePL0Compiler -r test
-		-g [file name] : check grammar of the file .
-			example : >ThePL0Compiler -g test
-		-c [file name] : compile the code file and generate an .exe file .
-			example : >ThePL0Compiler -c test
-		-h : get more infomation . 
+   	> 4.	[command]
+	>	-r [file name] : open editor then read the file autoly .
+	>		example : >ThePL0Compiler -r test
+	>	-g [file name] : check grammar of the file .
+	>		example : >ThePL0Compiler -g test
+	>	-c [file name] : compile the code file and generate an .exe file .
+	>		example : >ThePL0Compiler -c test
+	>	-h : get more infomation . 
 	5.	the you will get the .exe file on the folder code where .
 	
 ### Editor
@@ -35,18 +35,18 @@ How to use
 	5.	you can use "up" "down" "left" "right" to change the cursor's position .
 	6.	you can use "pgUp" and "pgDn" to change the size of word .
 	7.	there are some function key :
-		F1 : show the line number where the cursor is .
-		shift + up/down : 10 line up/down .
-		alt   + up/down	: reseek to top/button .
-		ctrl  + up/down	: last/next command.
-		ctrl  + left/right :	input ":("/")" to console .
+	>	F1 : show the line number where the cursor is .
+	>	shift + up/down : 10 line up/down .
+	>	alt   + up/down	: reseek to top/button .
+	>	ctrl  + up/down	: last/next command.
+	>	ctrl  + left/right :	input ":("/")" to console .
 	8.	there are some command : the only legal format of command is like this :(type[,value])
-		:(r,value)	read the file named value .
-		:(s,value)	save codes to file value.pl0 .
-		:(grammar)	check grammar .
-		:(c,value)	compile the code .
-		:(line)		show the line number .
-		:(jmp,value)	jump tp line value .
-		:(cl)		clear contents .
+	>	:(r,value)	read the file named value .
+	>	:(s,value)	save codes to file value.pl0 .
+	>	:(grammar)	check grammar .
+	>	:(c,value)	compile the code .
+	>	:(line)		show the line number .
+	>	:(jmp,value)	jump tp line value .
+	>	:(cl)		clear contents .
 
   
