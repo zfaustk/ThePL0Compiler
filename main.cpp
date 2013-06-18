@@ -57,18 +57,18 @@ void display(void)
 	timeLine += 1;
 	int length;
 	lav.GetDrawer().SelectFont(FontSize,100,"Verdana");
-	
+
 	glClearColor(.0,.133,.251,0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
-	
+
 	lav.GetDrawer().SetColor(1.0, 1.0, 1.0);
 	lav.ShowLine(tl.strConsole,5,5);
 
-	lav.ShowLine(":" + lav.GetLineTokenType(tl.strConsole), Width - 150, 5, KH::LA_View::Colorf(1,1,1));
+	lav.ShowLine(":" + lav.GetLineTokenType(tl.strConsole), Width - 200, 5, KH::LA_View::Colorf(1,1,1));
 	//Addition
-	lav.ShowLine(":" + tl.strEcho , Width - 150, 5 + LineHeight, KH::LA_View::Colorf(-.1,-.1,-1));
+	lav.ShowLine(":" + tl.strEcho , Width - 200, 5 + LineHeight, KH::LA_View::Colorf(-.1,-.1,-1));
 
 	//显示行
 	lav.GetDrawer().SetColor(1,g,1);
@@ -80,7 +80,7 @@ void display(void)
 	length = lav.ShowLine(tl.GetString(),SignWidth , Height - CenterHeight ,KH::LA_View::Colorf(0.0,0.0,0.0)); //
 	length = lav.ShowLine(tl.GetCloumeString(true),SignWidth , Height - CenterHeight ,KH::LA_View::Colorf(0.2,0.3,0.2));
 
-	
+
 	if( nSleep > 0 ){
 		lav.GetDrawer().SetColor(.1,.1,.1);
 		glRectf(0 ,Height - 5.0f, Width ,Height);
@@ -90,7 +90,7 @@ void display(void)
 		glRectf((31 - nSleep) * (Width/30) ,Height - 5.0f, (30 - nSleep) * (Width/30) ,Height);
 		nSleep --;
 	}
-	
+
 	//显示插入标记
 	int widthSigned = SignWidth + lav.GetDrawer().GetTextLength(tl.GetCloumeString(true))- lav.GetDrawer().GetTextLength(" ");
 	int widthWord = lav.GetDrawer().GetTextLength(tl.GetCloumeString())- lav.GetDrawer().GetTextLength(" ");
@@ -98,8 +98,8 @@ void display(void)
 	/*lav.GetDrawer().RasterPos(widthSigned,Height - CenterHeight);
 	lav.GetDrawer()<<"|";*/
 	glRectf(widthSigned - widthWord ,Height - CenterHeight - 3.5f, widthSigned ,Height - CenterHeight - 2.0f);
-	
-	
+
+
 
 	KH::TextList::iterator itUp = tl.now();
 	for(int i = 1; i * LineHeight < CenterHeight; i++){
@@ -128,12 +128,12 @@ void reshape(const int width, const int height)
 	glLoadIdentity();
 	gluOrtho2D(0, width, 0, height);
 	glMatrixMode(GL_MODELVIEW);
-	
+
 	glLoadIdentity();
 	ResetHeight(height);
 	Width = width;
 
-	
+
 }
 
 void processTimeFunc(int p = 5000){
@@ -230,14 +230,14 @@ void processNormalKeys(unsigned char key,int x,int y)
 	int mod = glutGetModifiers(); 
 	switch(key){
 	case 8: //backspace
-		
+
 		if(tl.strConsole.empty()) {
 			tl.EraseString();
 			lav.GetTKL().Change(tl);
 		}
 		else
 			tl.strConsole.pop_back();
-		
+
 		break;
 	case 9: // table
 		tl.InsertString("\t ") ;break;
@@ -265,15 +265,27 @@ void processNormalKeys(unsigned char key,int x,int y)
 				gpl0.ExertGrammar();
 				WaitCommand(5);
 				tl.strEcho = "Grammar complete .";
-				std::cout<< "====\n" << gpl0.OutErrorString();
+				std::cout<< "== Grammar Analysis ==\n" << gpl0.OutErrorString();
 			}
 			else if(s.length()>3 && s.substr(0,3) == "cm:") {
 				gpl0.GetInput(tl);
-				Compile(s.substr(3,s.length()-3));
-				std::ofstream fos(s.substr(3,s.length()-3) + ".exe");//创建打开文件
-				WaitCommand(26);
-				if(!fos) tl.strEcho = "Compile failed .";
-				else tl.strEcho = "Compile complete .";
+				gpl0.ExertGrammar();
+				if(gpl0.IsPassed()){
+					Compile(s.substr(3,s.length()-3));
+					WaitCommand(18);
+					if(gpl0.SaResult()){
+						tl.strEcho = "Compile complete .";
+						std::cout<< "== Compile complete ==\n";
+					}
+					else{
+						tl.strEcho = "Compile failed .";
+						std::cout<< "== Semantic Analysis ==\n" << gpl0.SaOutErrorString();
+					}
+				}
+				else {
+					tl.strEcho = "Grammar failed .";
+					std::cout<< "== Grammar Analysis ==\n" << gpl0.OutErrorString();
+				}
 			}
 			else if(s.length()>3 && s.substr(0,3) == "sv:") {
 				gpl0.GetInput(tl);
@@ -308,7 +320,7 @@ void processNormalKeys(unsigned char key,int x,int y)
 		tl.strConsole += key;
 		tl.strEcho = "";
 	}
-	
+
 	glutPostRedisplay();
 } 
 
@@ -326,7 +338,7 @@ void Compile(std::string path){
 	if(!fos) return ;
 	std::string str = PL0Generate(gpl0);
 	fos << str ;
-	
+
 	ShellExecute(NULL,"open","cmd.exe",("/c Compile.bat " + path + ".c").c_str() ,NULL,SW_SHOWNORMAL);
 }
 
@@ -340,7 +352,7 @@ void SaveCode(std::string path){
 }
 
 void FileInput(std::string path){
-	
+
 	std::ifstream fin(path + ".pl0",std::ios::in);
 	if(!fin)return;
 	std::string strf;
@@ -348,12 +360,12 @@ void FileInput(std::string path){
 	while(!fin.eof() ) {
 
 		fin.getline(buff,256,'\n');
-		
+
 		//TODO: 排除其他情况
 
 		strf = std::string(buff);
 		tl.InsertLine(strf);
-		
+
 	}
 	tl.handleMoveTop();
 	int max = 10;
@@ -387,7 +399,7 @@ int main(int argc, char *argv[])
 	}
 	catch(int *){
 	}
-	
+
 	KH::DFAM_Range_Initial();
 
 	lav.GetLA() 
@@ -410,7 +422,7 @@ int main(int argc, char *argv[])
 		.AddTair(KH::LexicalAnalysis::TYPEDEF::_RANGLE,	KH::dRAngle)
 		.AddTair(KH::LexicalAnalysis::TYPEDEF::_LBIGPAREN,	KH::dLBigParen)
 		.AddTair(KH::LexicalAnalysis::TYPEDEF::_RBIGPAREN,	KH::dRBigParen)
-		
+
 		.AddTair(KH::LexicalAnalysis::TYPEDEF::_QUOTE,	KH::dQuote)
 		.AddTair(KH::LexicalAnalysis::TYPEDEF::_EQUAL,	KH::dEqual)
 		.AddTair(KH::LexicalAnalysis::TYPEDEF::_IDENCITAL,	KH::dIdencital)
@@ -447,7 +459,7 @@ int main(int argc, char *argv[])
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(800, 600);
 	glutCreateWindow(argv[0]);
-	
+
 	//init();
 	glutKeyboardFunc(processNormalKeys);
 	glutSpecialFunc(processSpecialKeys);
@@ -456,7 +468,7 @@ int main(int argc, char *argv[])
 	glutTimerFunc(500, processTimeFunc , 1);
 	glutMainLoop();
 
-	
+
 
 	return 0;
 }

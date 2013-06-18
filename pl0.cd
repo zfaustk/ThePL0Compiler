@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KH::DFA&lt;_Adapter, _Terminator, _State&gt;">
+    <Position X="13" Y="0.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Typedef Name="KH::DFA&lt;_Adapter, _Terminator, _State&gt;::Terminator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>_DFA.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="KH::DFA&lt;_Adapter, _Terminator, _State&gt;::State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>_DFA.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="KH::DFA&lt;_Adapter, _Terminator, _State&gt;::Adapter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>_DFA.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>YAAAAAAAAAAIBABAAACDAAAAAAJIAAIAAAAAAQAAAAA=</HashCode>
+      <FileName>_DFA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::DFA_Transition&lt;_Adapter, _State&gt;">
+    <Position X="16.75" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Typedef Name="KH::DFA_Transition&lt;_Adapter, _State&gt;::Adapter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>_DFA.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="KH::DFA_Transition&lt;_Adapter, _State&gt;::State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>_DFA.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAACAAAAAEAAAAAAAAEAAAAAQAA=</HashCode>
+      <FileName>_DFA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::DFAMachine&lt;_Adapter, _Terminator&gt;">
+    <Position X="10" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Typedef Name="KH::DFAMachine&lt;_Adapter, _Terminator&gt;::Adapter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DFAMachine.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="KH::DFAMachine&lt;_Adapter, _Terminator&gt;::Terminator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DFAMachine.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="KH::DFAMachine&lt;_Adapter, _Terminator&gt;::_State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DFAMachine.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAEAAIAAAAAABAFAgAAAAAAAAAEIAAIAEEQAAQAAAAA=</HashCode>
+      <FileName>DFAMachine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::Draw_color" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQgAAAAAAAAAAIAIAAQAAAAAAAAAABAAAAAAAAQAA=</HashCode>
+      <FileName>KH_Draw_color.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::_ErrorType" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEAAAAAAAAAAAACAAAAAAAAAAAAACAAAAAAIAAAAAA=</HashCode>
+      <FileName>GrammarErrorType.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::LA_View" Collapsed="true">
+    <Position X="0.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgACAEAAgAAABAAAAAgAIAAAgAAAAAAhACQAA=</HashCode>
+      <FileName>LA_View.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::LexicalAnalysis" Collapsed="true">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAGAIAAAAAAAAgAACEAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>LexicalAnalysis.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::_RangeAdapter" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgBAAAAAAEAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>_DFA_Adapter_Range.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::_ReservedWord&lt;_WordType, _SignType&gt;" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAIAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LexicalAnalysisReservedWord.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::State&lt;_Adapter, _Terminator&gt;" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAgABAAAAg=</HashCode>
+      <FileName>_DFA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::TextDrawer" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAgAAAIAQAAAAAACAAAQAIAAAAAAAAAAAAggAAAAACA=</HashCode>
+      <FileName>KH_DrawText.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::TextList" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiABAACEwAAIBEIAAAILAQQAAIAQSEgHEAwQABCQAM=</HashCode>
+      <FileName>KH_TextList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::_Token&lt;_ValueType, _SignType&gt;">
+    <Position X="7" Y="3.25" Width="1.5" />
+    <NestedTypes>
+      <Typedef Name="KH::_Token&lt;_ValueType, _SignType&gt;::SignType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TokenAnalysis.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="KH::_Token&lt;_ValueType, _SignType&gt;::ValueType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TokenAnalysis.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABABAAAAIAAAAJAAAAAQAQAAAAAABCAAAAAAAAAIAAA=</HashCode>
+      <FileName>TokenAnalysis.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::_TokenAdapter&lt;_SignType&gt;">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Typedef Name="KH::_TokenAdapter&lt;_SignType&gt;::SignType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>_DFA_Adapter_Token.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>_DFA_Adapter_Token.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::TokenAnalysis&lt;_SignType, _DFAMachine&gt;" Collapsed="true">
+    <Position X="0.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAABAAAAEQAAAAAAAEAAAAAAABAAIAAAA=</HashCode>
+      <FileName>TokenAnalysis.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::TokenList" Collapsed="true">
+    <Position X="2.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAJAASEwBAABEAgAAIKAQQAAAAACAAEAAAAABCAAA=</HashCode>
+      <FileName>KH_TokenList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KH::Transition&lt;_Terminator, _Adapter, _State&gt;" Collapsed="true">
+    <Position X="4.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAQAAABAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>_DFA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="KH::LEXICAL_ANALYSIS_DEFINE" Collapsed="true">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DEEkAAAowBAAECCgAiBIcAZDAGggBAEAogA2BgBFEAg=</HashCode>
+      <FileName>LexicalAnalysisDefine.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="KH::LEXICAL_ANALYSIS_RESERVEDWORD_DEFINE" Collapsed="true">
+    <Position X="2.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABIBAAAADSgAAAAAAAJAAAAAAAAAAAAKGBQAAEigQ=</HashCode>
+      <FileName>LexicalAnalysisReservedWord.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

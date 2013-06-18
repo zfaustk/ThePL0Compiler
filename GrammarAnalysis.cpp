@@ -7,12 +7,14 @@
 bool KH::GrammarPL0::ExertGrammar(bool isGen){
 	bool result = true;
 	this->Reset(false);
-	
+
 	if(isGen){
 		IsGenerate = isGen;
 		sGens.clear();
 		funcNames.clear();
 	}
+
+	Sa.Reset();
 
 	while(! this->CheckEnd()){
 		if(! Block()) //TODO:第五行出错（var）
@@ -33,11 +35,11 @@ bool KH::GrammarPL0::GrammarSign(KH::GrammarPL0::Token t,const int sign) {
 }
 
 void KH::GrammarPL0::Error(bool &result, std::string message, bool skipit){
-	 
+
 	InsertError(KH::GrammarPL0::ErrorType( GetLine(),": " + message) );
 	if(skipit) skip(1);
 	result = false;
-						
+
 }
 
 //分程序语法判断
@@ -58,12 +60,14 @@ bool KH::GrammarPL0::Block(){
 				 GetWord(2,false).GetSign() == KH::_FLOAT 
 				) 
 			{
+				Sa.PushVariable(GetLine(),GetWord(false).GetValue());
+
 				//Gen  int a = 11
 				if(GetWord(2,false).GetSign() == KH::_INT)
 					GenPush("const int " + GetWord(false).GetValue() + " = " + GetWord(2,false).GetValue() + "; " );
 				else
 					GenPush("const float " + GetWord(false).GetValue() + " = " + GetWord(2,false).GetValue() + "; " );
-
+				
 				 skip(3,false);
 				while( GetWord(false).GetSign() == KH::_COMMA){
 					if(	 GetWord(1,false).GetSign() == KH::_IDENTIFIER &&
@@ -72,6 +76,8 @@ bool KH::GrammarPL0::Block(){
 						 GetWord(3,false).GetSign() == KH::_FLOAT 
 						)
 					{
+						Sa.PushVariable(GetLine(),GetWord(1,false).GetValue());
+
 						//Gen  , int a = 11
 						if(GetWord(3,false).GetSign() == KH::_INT)
 							GenPush("const int " + GetWord(1,false).GetValue() + " = " + GetWord(3,false).GetValue() + "; " );
@@ -96,7 +102,7 @@ bool KH::GrammarPL0::Block(){
 			{
 				Error( result, " Const sentence Error : " + GetWord(false).GetValue() );
 			}
-			
+
 		}
 		else
 		{
@@ -108,12 +114,16 @@ bool KH::GrammarPL0::Block(){
 	{
 		 skip(1);//取下一个单词
 		if( GetWord(false).GetSign() == KH::_IDENTIFIER){
+			Sa.PushVariable(GetLine(),GetWord(false).GetValue());
+
 			//Gen  var a
 			GenPush("double " + GetWord(false).GetValue() + " = 0 ; " );
 			 skip(1);
 			while( GetWord(false).GetSign() == KH::_COMMA){
 				if(	 GetWord(1,false).GetSign() == KH::_IDENTIFIER )
 				{
+					Sa.PushVariable(GetLine(),GetWord(1,false).GetValue());
+
 					//Gen  var .. , a
 					GenPush("double " + GetWord(1,false).GetValue() + " = 0 ; " );
 					 skip(2);
@@ -144,6 +154,8 @@ bool KH::GrammarPL0::Block(){
 		if(	 GetWord(false).GetSign() == KH::_IDENTIFIER && 
 			 GetWord(1,false).GetSign() == KH::_SEMICOLON)//"procedure"后应为标识符
 		{
+			Sa.PushVariable(GetLine(),GetWord(false).GetValue());
+
 			//Gen  var .. , a
 				GenPush("double " + GetWord(false).GetValue() + "( ) { " ); //注意闭合！
 				funcNames.push_back(GetWord(false).GetValue());
@@ -153,13 +165,13 @@ bool KH::GrammarPL0::Block(){
 
 			 //Gen  var .. , a
 			 GenPush(" return 0 ; } " ); //注意闭合！
-			 
+
 		}
 		else{
 			Error( result," Proc define Error : " + GetWord(false).GetValue() + GetWord(1,false).GetValue() ) ;
 		}
 	}//End of if procedure
-	
+
 	if(!StatementParsing()){
 		Error( result," Parsing Error . " );
 	}//End of if Parsing
@@ -171,7 +183,7 @@ bool KH::GrammarPL0::Block(){
 bool KH::GrammarPL0::ConditionParsing()//nIndentNum是打印时要缩进的空格数
 {
 	bool result = true;
-	 
+
 	if( GetWord(false).GetSign() == KH::_ODD)//如果有"odd"单词
 	{
 		//Gen  if (
@@ -226,7 +238,7 @@ bool KH::GrammarPL0::ExpressionParsing()//nIndentNum是打印时要缩进的空格数
 
 	if( GetWord(false).GetSign() == KH::_PLUS ||  GetWord(false).GetSign() == KH::_MINUS)
 	{//如果开头有正负号,则此时表达式应被看作一个正的或负的项
-		
+
 		//Gen  +-
 			GenPush(GetWord(false).GetValue());
 
@@ -258,7 +270,7 @@ bool KH::GrammarPL0::ExpressionParsing()//nIndentNum是打印时要缩进的空格数
 bool KH::GrammarPL0::TermParsing()//nIndentNum是打印时要缩进的空格数
 {
 	bool result = true;
-	 
+
 	if(! FactorParsing()){
 		Error( result," Term Parsing Error , There should be a Factor .");
 	}
@@ -280,10 +292,12 @@ bool KH::GrammarPL0::TermParsing()//nIndentNum是打印时要缩进的空格数
 bool KH::GrammarPL0::FactorParsing()
 {
 	bool result = true;
-	 
+
 	switch( GetWord(false).GetSign())
 	{
 		case KH::_IDENTIFIER://因子可以是一个常量或变量
+			Sa.ExistVariable(GetLine(),GetWord(false).GetValue());
+
 			//Gen  ident
 			GenPush(GetWord(false).GetValue());
 			 skip(1);
@@ -300,7 +314,7 @@ bool KH::GrammarPL0::FactorParsing()
 			//Gen (
 			GenPush(" ( ");
 			 skip(1);
-			
+
 			if(!ExpressionParsing())
 			{
 				Error( result," Factor Error , There should be a Expression .");
@@ -326,11 +340,13 @@ bool KH::GrammarPL0::FactorParsing()
 }
 
 bool KH::GrammarPL0::StatementParsing(){
-	
+
 	bool result = true;
-	 
+
 	switch( GetWord(false).GetSign()){
 		case KH::_IDENTIFIER: //Identifire
+			Sa.ExistVariable(GetLine(),GetWord(false).GetValue());
+
 			//Gen a = ..
 			GenPush(GetWord(false).GetValue() + " = ");//注意闭合
 
@@ -352,6 +368,8 @@ bool KH::GrammarPL0::StatementParsing(){
 		case KH::_CALL:	//Call
 			 skip(1);
 			if( GetWord(0,false).GetSign() == KH::_IDENTIFIER){
+				Sa.ExistVariable(GetLine(),GetWord(false).GetValue());
+
 				//Gen a();
 				GenPush(GetWord(false).GetValue() + " () ;");
 				 skip(1);
@@ -390,7 +408,7 @@ bool KH::GrammarPL0::StatementParsing(){
 			else{
 				Error( result," Statement Error , Statement required .");
 			}
-			
+
 			break;
 		case KH::_IF:
 			//Gen if
@@ -442,12 +460,14 @@ bool KH::GrammarPL0::StatementParsing(){
 		case KH::_READ:
 			 skip(1);
 			if( GetWord(0,false).GetSign() == KH::_LPAREN &&  GetWord(1,false).GetSign() == KH::_IDENTIFIER){
+				Sa.ExistVariable(GetLine(),GetWord(1,false).GetValue());
 				//Gen read
 					GenPush(" scanf(\"%lf\" , &" + GetWord(1,false).GetValue() + ") ;");
 				 skip(2);
 				 while( GetWord(0,false).GetSign() == KH::_COMMA){
 					 skip(1);
 					if( GetWord(0,false).GetSign() == KH::_IDENTIFIER){
+						Sa.ExistVariable(GetLine(),GetWord(false).GetValue());
 						//Gen read
 							GenPush(" scanf(\"%lf\" , &" + GetWord(0,false).GetValue() + ") ;");
 						 skip(1);

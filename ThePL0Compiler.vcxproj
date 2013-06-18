@@ -85,6 +85,10 @@
     <ClCompile Include="KH_DrawText.cpp" />
     <ClCompile Include="KH_TextList.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SemanticAnalysis.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pl0.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

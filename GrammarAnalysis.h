@@ -10,6 +10,8 @@
 
 #include "KH_TextList.h"
 
+#include "SemanticAnalysis.h"
+
 #include <string.h>
 #include <vector>
 
@@ -96,13 +98,8 @@ namespace KH {
 			if(itWord != itLine->end())word = *itWord;
 			if(AddToNext)
 			{
-				if(itWord != itLine->end()){
-					itWord ++;
-				}
-				if(itWord == itLine->end()){
-					itLine ++;
-					itWord = itLine->begin();
-				}
+				skip(1);
+				return Token();
 			}
 			else return word;
 		}
@@ -138,7 +135,6 @@ namespace KH {
 			return false;
 		}
 		
-		bool ExertGrammar(bool isGen = false);
 
 		//当前指针往前跳
 		GrammarPL0& skip(int offset, bool NotSkipLine = false){
@@ -206,8 +202,11 @@ namespace KH {
 				str += (*it + "\n");
 			}
 			if(str.length() <= 1)str = "Success\n";
+			str += "===== Grammar End ====\n";
 			return str;
 		}
+
+
 
 		//重置当前位置和错误信息表
 		void Reset(bool ClearErrorList = true){
@@ -219,11 +218,22 @@ namespace KH {
 				itWord = itLine->begin();
 		}
 
+		bool SaResult(){
+			return Sa.OutErrorString().length()<=1 ;
+		}
+
+		std::string SaOutErrorString(){
+			return Sa.OutErrorString();
+		}
+
 //#======================================================================================
 
-	private :
+		//语法处理主入口
+		bool ExertGrammar(bool isGen = false);
 
+	private :
 		bool GrammarSign(KH::GrammarPL0::Token t,const int d);
+		
 		//错误处理
 		void Error(bool &result, std::string message, bool skip = true );
 		//分程序语法判断
@@ -252,6 +262,7 @@ namespace KH {
 		TokenVector::iterator itWord;
 		LA* pla;
 		ErrorTypeList ErrorList;
+		SemanticAnalysis Sa;
 		
 		bool IsGenerate;
 	public:

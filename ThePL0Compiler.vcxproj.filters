@@ -28,6 +28,9 @@
     <Filter Include="头文件\LAView">
       <UniqueIdentifier>{fd5934c7-e3a3-4efc-a44d-d8bb3d40677e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\semantic">
+      <UniqueIdentifier>{e6cd39b1-f8dc-4da9-8099-e41111ea047f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_DFA.h">
@@ -101,5 +104,13 @@
     <ClCompile Include="GrammarAnalysis.cpp">
       <Filter>头文件\Gramma</Filter>
     </ClCompile>
+    <ClCompile Include="SemanticAnalysis.h">
+      <Filter>头文件\semantic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pl0.cd">
+      <Filter>源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>
