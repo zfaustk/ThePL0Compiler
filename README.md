@@ -32,7 +32,8 @@ How to use
 	1.	double click ThePL0Compiler to exert the program .
 	2.	try some input like hello world ! .
 	3.	all character you typed will appear where the consloe is until the blank input.
-	4.	if you type the blank(' ') the word you type will be infused to the code area where the cursor is , if the type is enter('\n') , it will creat a new line under the word infused . if the type is table('\t') , it will go directly to the code area . 
+	4.	if you type the blank(' ') the word you type will be infused to the code area where the cursor is .
+		if the type is enter('\n') , it will creat a new line under the word infused . if the type is table('\t') , it will go directly to the code area . 
 	5.	you can use "up" "down" "left" "right" to change the cursor's position .
 	6.	you can use "pgUp" and "pgDn" to change the size of word .
 	7.	there are some function key :
@@ -42,6 +43,7 @@ How to use
 		ctrl  + up/down	: last/next command.
 		ctrl  + left/right :	input ":("/")" to console .
 	8.	there are some command : the only legal format of command is like this :(type[,value])
+
 		:(r,value)	read the file named value .
 		:(s,value)	save codes to file value.pl0 .
 		:(grammar)	check grammar .
@@ -49,5 +51,12 @@ How to use
 		:(line)		show the line number .
 		:(jmp,value)	jump tp line value .
 		:(cl)		clear contents .
+
+		:(if)		"if " quickly .
+		:(while)	"while " quickly .
+		:(proc)		"procedure " quickly .
+		:(block)	"begin " "end " quickly .
+		:(bk)		"{ " "} " quickly .
+		:(proc)		"procedure " quickly .
 
   

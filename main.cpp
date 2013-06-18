@@ -301,6 +301,56 @@ void processNormalKeys(unsigned char key,int x,int y)
 				tl.handleMoveDown(ntmp);
 				ShowLineNumberNow("Jump to ");
 			}
+			else if(s == "if:") { //if
+				tl.InsertLine() ;
+				tl.InsertString("if ");
+				tl.InsertLine() ;
+				tl.InsertString("then ");
+				tl.InsertString("; ");
+				tl.handleMoveUp();
+			}
+			else if(s == "wl:") { //while
+				tl.InsertLine() ;
+				tl.InsertString("while ");
+				tl.InsertLine() ;
+				tl.InsertString("do ");
+				tl.InsertString("{ ");
+				tl.InsertLine() ;
+				tl.InsertString("\t ");
+				tl.InsertString("; ");
+				tl.InsertLine() ;
+				tl.InsertString("} ");
+				tl.handleMoveUp(3);
+			}
+			else if(s == "pr:") { //proc
+				tl.InsertLine() ;
+				tl.InsertString("procedure   ");
+				tl.InsertString("; ");
+				tl.InsertLine() ;
+				tl.InsertString("{ ");
+				tl.InsertLine() ;
+				tl.InsertString("\t ");
+				tl.InsertString("; ");
+				tl.InsertLine() ;
+				tl.InsertString("} ");
+				tl.handleMoveUp(3);
+				tl.handleMoveLeft();
+			}
+			else if(s.length()>=3 && s.substr(0,3) == "bk:") { //while
+				tl.InsertLine() ;
+				if(s.length()==3)
+					tl.InsertString("{ ");
+				else tl.InsertString("begin ");
+				tl.InsertLine() ;
+				tl.InsertString("\t ");
+				tl.InsertString("; ");
+				tl.InsertLine() ;
+				if(s.length()==3)
+					tl.InsertString("} ");
+				else tl.InsertString("end ");
+				tl.handleMoveUp();
+				tl.handleMoveLeft();
+			}
 			else{
 				tl.InsertString(tl.strConsole + " ");
 				tl.InsertLine() ;

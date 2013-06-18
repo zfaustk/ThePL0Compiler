@@ -1,0 +1,10 @@
+var a ; 
+
+begin 
+a = 90 ; 
+while 100 > ( 1 + 4 + a ) 
+do { 
+	 a  = a + 1 ; 
+	 write ( a ) ; 
+} 
+end 

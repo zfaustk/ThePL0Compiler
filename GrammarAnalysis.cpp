@@ -490,14 +490,14 @@ bool KH::GrammarPL0::StatementParsing(){
 			 skip(1);
 			if( GetWord(0).GetSign() == KH::_LPAREN ){
 				//Gen write(.. 
-					GenPush(" printf(\"%lf \\n \" , ");
+					GenPush(" printf(\"%g \\n \" , ");
 				 skip(1);
 				if(ExpressionParsing()){
 					//Gen write .. a .. 
 					GenPush(" ) ;");
 					while( GetWord(0,false).GetSign() == KH::_COMMA){
 						//Gen write .. ,
-							GenPush(" printf(\"%lf \\n \" , ");
+							GenPush(" printf(\"%g \\n \" , ");
 						 skip(1);
 						if(!ExpressionParsing())
 							Error( result," Statement Error , ¡¾Expression required¡¿ .");

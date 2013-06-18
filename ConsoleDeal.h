@@ -29,6 +29,21 @@ namespace KH{
 				else if(console == ":(grammar)"){
 					return "gm:";
 				}
+				else if(console == ":(if)"){
+					return "if:";
+				}
+				else if(console == ":(while)"){
+					return "wl:";
+				}
+				else if(console == ":(bk)"){
+					return "bk:";
+				}
+				else if(console == ":(block)"){
+					return "bk::";
+				}
+				else if(console == ":(proc)"){
+					return "pr:";
+				}
 				else if(console == ":(line)"){
 					return "ln:";
 				}

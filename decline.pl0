@@ -1,0 +1,15 @@
+const __MAX = 1000 ; 
+
+var a ; 
+
+begin 
+	 read ( a ) ; 
+	 if a > __MAX 
+	 then 
+	 while a > __MAX 
+	 do { 
+	 	 a = a - 1 ; 
+	 	 write ( a ) ; 
+	 } 
+end 
+
